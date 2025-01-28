@@ -335,3 +335,9 @@ input#agree:checked::after {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+label:after {
+    content: '*';
+    color: rgb(217, 48, 37);
+    margin-left: 2px;
+}
