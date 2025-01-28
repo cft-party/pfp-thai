@@ -1,0 +1,300 @@
+/* General Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Anuphan', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  background-color: rgb(255, 98, 0);
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+header .logo h1 {
+  color: white;
+  font-size: 24px;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff00;
+  transition: .5s;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Hero Section */
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(255, 98, 0, 0.75), rgb(225, 0, 0)), url(https://media.istockphoto.com/id/511061090/photo/business-office-building-in-london-england.jpg?s=612x612&w=0&k=20&c=nYAn4JKoCqO1hMTjZiND1PAIWoABuy1BwH1MhaEoG6w=);
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    margin: auto 0;
+    align-items: center;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.hero p {
+  font-size: 24px;
+  margin: 10px 0 20px;
+}
+
+.hero .btn {
+  background-color: rgb(255, 98, 0);
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.hero .btn:hover {
+  background-color: rgb(255, 70, 0);
+}
+
+/* Sections */
+.section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 18px;
+  color: #555;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form input {
+  width: 300px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: rgb(255, 98, 0);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: rgb(255, 70, 0);
+}
+
+/* Footer */
+footer {
+  background-color: rgb(225, 0, 0);
+  color: white;
+  padding: 40px 0;
+}
+
+footer .footer-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+footer .footer-logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+footer .footer-logo p {
+  margin: 0;
+  font-size: 18px;
+}
+
+footer .container {
+    display: flex;
+    justify-content: center;
+}
+
+footer .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+    display: grid;
+}
+
+footer .footer-links ul li {
+  margin: 0 15px;
+}
+
+footer .footer-links ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+footer .footer-links ul li a:hover {
+  text-decoration: underline;
+}
+
+footer .footer-social {
+  display: grid;
+  margin-top: 20px;
+}
+
+footer .footer-social a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer .footer-social a:hover {
+  text-decoration: underline;
+}
+
+footer .footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* Loader Styles */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.loader.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  border: 8px solid rgba(255, 98, 0, 0.3);
+  border-top: 8px solid rgb(255, 98, 0);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Menu Button Styles */
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-btn {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-btn img.menu-icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 900px) {
+  .menu-btn {
+    display: block;
+  }
+
+  nav ul.nav-links {
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: rgb(255, 98, 0);
+    transition: height 0.3s ease;
+  }
+
+  nav ul.nav-links.active {
+    height: 250px; /* ปรับความสูงตามจำนวนเมนู */
+  }
+
+  nav ul.nav-links li {
+    margin: 10px 0;
+    text-align: center;
+  }
+}
