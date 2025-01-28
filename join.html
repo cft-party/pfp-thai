@@ -42,48 +42,72 @@
         <h2>สมัครสมาชิก</h2>
         <p>ร่วมเป็นส่วนหนึ่งของพรรคก้าวเพื่ออนาคต</p>
         <form>
-            <div>
-                <label for="discord">ชื่อผู้ใช้ Discord</label>
-                <input type="text" id="discord" placeholder="ชื่อผู้ใช้ Discord" required>
+            <div style=" display: flex; ">
+                  <div style=" display: grid; text-align: left; ">
+                      <label for="discord">ชื่อผู้ใช้ Discord</label>
+                      <input type="text" id="discord" placeholder="ชื่อผู้ใช้ Discord" required="">
+                  </div>
+              
+                  <div style=" display: grid; text-align: left; ">
+                      <label for="email">อีเมล</label>
+                      <input type="email" id="email" placeholder="อีเมล" required="">
+                  </div>
+              </div>
+          
+              <div style=" display: flex; ">
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="prefix">คำนำหน้าชื่อ</label>
+                        <input type="text" id="prefix" placeholder="คำนำหน้าชื่อ" required>
+                    </div>
                 
-                <label for="email">อีเมล</label>
-                <input type="email" id="email" placeholder="อีเมล" required>
-            </div>
-    
-            <div>
-                <label for="prefix">คำนำหน้าชื่อ</label>
-                <input type="text" id="prefix" placeholder="คำนำหน้าชื่อ" required>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="roblox-user">ชื่อผู้ใช้ Roblox</label>
+                        <input type="text" id="roblox-user" placeholder="ชื่อผู้ใช้ Roblox" required>
+                    </div>
+              </div>
+          
+              <div style=" display: flex; ">
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="roblox-link">Link User Roblox</label>
+                        <input type="url" id="roblox-link" placeholder="Link User Roblox" required>
+                    </div>
                 
-                <label for="roblox-user">ชื่อผู้ใช้ Roblox</label>
-                <input type="text" id="roblox-user" placeholder="ชื่อผู้ใช้ Roblox" required>
-            </div>
-    
-            <div>
-                <label for="roblox-link">Link User Roblox</label>
-                <input type="url" id="roblox-link" placeholder="Link User Roblox" required>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="dob">วันเข้าร่วม Roblox</label>
+                        <input type="date" id="dob" required>
+                    </div>
+              </div>
+          
+              <div style=" display: flex; ">
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="age">อายุ</label>
+                        <input type="text" id="age" placeholder="อายุ" required>
+                    </div>
+              </div>
+          
+              <div style=" display: flex; ">
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="nationality">สัญชาติ</label>
+                        <input type="text" id="nationality" placeholder="สัญชาติ" value="ไทย" required>
+                    </div>
                 
-                <label for="dob">วันเกิด</label>
-                <input type="date" id="dob" required>
-            </div>
-    
-            <label for="age">อายุ</label>
-            <input type="text" id="age" placeholder="อายุ" required>
-    
-            <div>
-                <label for="nationality">สัญชาติ</label>
-                <input type="text" id="nationality" placeholder="สัญชาติ" value="ไทย" required>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="ethnicity">เชื้อชาติ</label>
+                        <input type="text" id="ethnicity" placeholder="เชื้อชาติ" value="ไทย" required>
+                    </div>
+              </div>
+          
+              <div style=" display: flex; ">
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="password">รหัสผ่าน</label>
+                        <input type="password" id="password" placeholder="รหัสผ่าน" required>
+                    </div>
                 
-                <label for="ethnicity">เชื้อชาติ</label>
-                <input type="text" id="ethnicity" placeholder="เชื้อชาติ" value="ไทย" required>
-            </div>
-    
-            <div>
-                <label for="password">รหัสผ่าน</label>
-                <input type="password" id="password" placeholder="รหัสผ่าน" required>
-                
-                <label for="confirm-password">ยืนยันรหัสผ่าน</label>
-                <input type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน" required>
-            </div>
+                    <div style=" display: grid; text-align: left; ">
+                        <label for="confirm-password">ยืนยันรหัสผ่าน</label>
+                        <input type="password" id="confirm-password" placeholder="ยืนยันรหัสผ่าน" required>
+                    </div>
+              </div>
     
             <div class="checkbox-container">
                 <p><strong>คุณสมบัติและลักษณะต้องห้ามของสมาชิกพรรค</strong>  
