@@ -6,6 +6,9 @@ body {
     text-align: center;
 }
 
+.flex {
+    display: flex;
+}
 
 header {
     background-color: rgb(255, 98, 0);
