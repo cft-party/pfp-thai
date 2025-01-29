@@ -87,3 +87,17 @@ if (document.getElementById('loginForm')) {
         }
     });
 }
+
+function searchProvinces() {
+    const searchTerm = document.getElementById('search').value.toLowerCase();
+    const filteredData = provincesData.filter(province => 
+        province.province.toLowerCase().includes(searchTerm)
+    );
+    displayProvinces(filteredData);
+}
+
+// แสดงข้อมูลเริ่มต้น
+displayProvinces(provincesData);
+
+// เพิ่ม Event Listener สำหรับค้นหา
+document.getElementById('search').addEventListener('input', searchProvinces);
