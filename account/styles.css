@@ -147,9 +147,10 @@ input:focus{
     margin: 0 auto;
 }
 
+
 button.action-btn {
-    width: 200px;
     height: 55.2px;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
