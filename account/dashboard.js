@@ -89,38 +89,19 @@ if (document.getElementById('loginForm')) {
 }
 
     // ฟังก์ชันสำหรับค้นหาจังหวัด
+
+    document.getElementById('search').addEventListener('input', searchProvinces);
+
     function searchProvinces() {
-        const searchInput = document.getElementById('search');
-        if (!searchInput) return; // ตรวจสอบว่า input มีอยู่หรือไม่
+        const searchTerm = document.getElementById('search').value.trim().toLowerCase();
+        const tableRows = document.querySelectorAll("#provinceTableBody tr");
 
-        const searchTerm = searchInput.value.trim().toLowerCase();
-
-        // ตรวจสอบว่า provincesData มีค่าหรือไม่
-        if (!Array.isArray(provincesData)) {
-            console.error("provincesData ไม่ใช่อาร์เรย์");
-            return;
-        }
-
-        const filteredData = provincesData.filter(province => 
-            province.province.toLowerCase().includes(searchTerm)
-        );
-
-        displayProvinces(filteredData);
+        tableRows.forEach(row => {
+            const provinceName = row.cells[0].textContent.toLowerCase(); // เอาชื่อจังหวัดจาก column แรก
+            if (provinceName.includes(searchTerm)) {
+                row.style.display = ""; // แสดงแถวที่ตรงกับคำค้นหา
+            } else {
+                row.style.display = "none"; // ซ่อนแถวที่ไม่ตรงกับคำค้นหา
+            }
+        });
     }
-
-    // ตรวจสอบว่ามีฟังก์ชัน displayProvinces และ provincesData หรือไม่
-    if (typeof displayProvinces === "function" && Array.isArray(provincesData)) {
-        displayProvinces(provincesData); // แสดงข้อมูลเริ่มต้น
-    } else {
-        console.error("displayProvinces หรือ provincesData ไม่ถูกต้อง");
-    }
-
-    // เพิ่ม Event Listener ให้กับ input
-    document.addEventListener("DOMContentLoaded", function () {
-        const searchInput = document.getElementById('search');
-        if (searchInput) {
-            searchInput.addEventListener('input', searchProvinces);
-        } else {
-            console.error("ไม่พบ element #search");
-        }
-    });
