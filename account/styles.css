@@ -6,17 +6,26 @@ body {
     text-align: center;
 }
 
+
 header {
-    background: rgb(255, 98, 0);
-    color: white;
-    padding: 20px;
-    text-align: center;
+    background-color: rgb(255, 98, 0);
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     z-index: 999;
     position: fixed;
     width: 100%;
+}
+
+header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo {
