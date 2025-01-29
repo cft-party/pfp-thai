@@ -115,3 +115,15 @@ tbody tr:nth-child(odd) {
 tbody tr:nth-child(even) {
     background-color: #ffe6dd;
 }
+
+input#search {
+    margin: 20px;
+    padding: 10px;
+    width: -webkit-fill-available;
+    border: none;
+    height: 30px;
+    border-bottom: 1px solid #093254;
+    background-color: transparent;
+    border-radius: 0;
+    color: #002646;
+}
