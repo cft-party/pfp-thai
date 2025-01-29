@@ -88,16 +88,39 @@ if (document.getElementById('loginForm')) {
     });
 }
 
-function searchProvinces() {
-    const searchTerm = document.getElementById('search').value.toLowerCase();
-    const filteredData = provincesData.filter(province => 
-        province.province.toLowerCase().includes(searchTerm)
-    );
-    displayProvinces(filteredData);
-}
+    // ฟังก์ชันสำหรับค้นหาจังหวัด
+    function searchProvinces() {
+        const searchInput = document.getElementById('search');
+        if (!searchInput) return; // ตรวจสอบว่า input มีอยู่หรือไม่
 
-// แสดงข้อมูลเริ่มต้น
-displayProvinces(provincesData);
+        const searchTerm = searchInput.value.trim().toLowerCase();
 
-// เพิ่ม Event Listener สำหรับค้นหา
-document.getElementById('search').addEventListener('input', searchProvinces);
+        // ตรวจสอบว่า provincesData มีค่าหรือไม่
+        if (!Array.isArray(provincesData)) {
+            console.error("provincesData ไม่ใช่อาร์เรย์");
+            return;
+        }
+
+        const filteredData = provincesData.filter(province => 
+            province.province.toLowerCase().includes(searchTerm)
+        );
+
+        displayProvinces(filteredData);
+    }
+
+    // ตรวจสอบว่ามีฟังก์ชัน displayProvinces และ provincesData หรือไม่
+    if (typeof displayProvinces === "function" && Array.isArray(provincesData)) {
+        displayProvinces(provincesData); // แสดงข้อมูลเริ่มต้น
+    } else {
+        console.error("displayProvinces หรือ provincesData ไม่ถูกต้อง");
+    }
+
+    // เพิ่ม Event Listener ให้กับ input
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchInput = document.getElementById('search');
+        if (searchInput) {
+            searchInput.addEventListener('input', searchProvinces);
+        } else {
+            console.error("ไม่พบ element #search");
+        }
+    });
