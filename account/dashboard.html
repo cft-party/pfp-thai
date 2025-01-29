@@ -20,7 +20,21 @@
             <button id="logoutBtn">Logout</button>
         </div>
     </header>
-    <main>
+    <main style="margin: 90px auto 0;width: 80%;">
+        <h2>ข้อมูลสมาชิกแบ่งตามจังหวัด</h2>
+        <input type="text" id="search" placeholder="ค้นหาจังหวัด...">
+        <table id="provinceTable" border="1">
+            <thead>
+                <tr>
+                    <th>จังหวัด</th>
+                    <th>จำนวนสมาชิกพรรค</th>
+                </tr>
+            </thead>
+            <tbody id="provinceTableBody">
+            </tbody>
+        </table>
+    </main>
+    <main style=" margin: 0; "> 
         <div class="flex">
             <section class="actions">
                 <h2>เมนูผู้ใช้</h2>
