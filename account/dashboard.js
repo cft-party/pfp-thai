@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("logoutBtn").addEventListener("click", function () {
         localStorage.removeItem("memberId");
         localStorage.removeItem("lastLogin");
-        window.location.href = "login.html"; // เปลี่ยนเส้นทางไปหน้า Login
+        window.location.href = "index.html"; // เปลี่ยนเส้นทางไปหน้า Login
     });
 });
 
