@@ -7,10 +7,34 @@ body {
 }
 
 header {
-    background: #023399;
+    background: rgb(255, 98, 0);
     color: white;
     padding: 20px;
     text-align: center;
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 50px; /* ปรับขนาดโลโก้ */
+    height: auto;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: white;
+    margin: 0;
 }
 
 button {
