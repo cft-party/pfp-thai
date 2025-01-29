@@ -89,26 +89,18 @@ if (document.getElementById('loginForm')) {
 }
 
     // ฟังก์ชันสำหรับค้นหาจังหวัด
+    document.getElementById('search').addEventListener('input', searchProvinces);
 
-   
-    // เก็บรายการจังหวัดทั้งหมดเริ่มต้น
-    const originalData = Array.from(document.querySelectorAll("#provinceTableBody tr")).map(row => row.outerHTML);
-    const tableBody = document.getElementById("provinceTableBody");
-    const searchInput = document.getElementById("search");
+    function searchProvinces() {
+        const searchTerm = document.getElementById('search').value.trim().toLowerCase();
+        const tableRows = document.querySelectorAll("#provinceTableBody tr");
 
-    searchInput.addEventListener("input", function () {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-
-        if (searchTerm === "") {
-            // ถ้าค้นหาเป็นค่าว่าง ให้คืนค่าตารางกลับมา
-            tableBody.innerHTML = originalData.join("");
-        } else {
-            // กรองจังหวัดที่ตรงกับคำค้นหา
-            const filteredRows = originalData.filter(rowHTML => 
-                rowHTML.toLowerCase().includes(`<td>${searchTerm}`)
-            );
-
-            // อัปเดตตารางใหม่
-            tableBody.innerHTML = filteredRows.join("");
-        }
-    });
+        tableRows.forEach(row => {
+            const provinceName = row.cells[0].textContent.toLowerCase(); // เอาชื่อจังหวัดจาก column แรก
+            if (provinceName.includes(searchTerm)) {
+                row.style.display = ""; // แสดงแถวที่ตรงกับคำค้นหา
+            } else {
+                row.style.display = "none"; // ซ่อนแถวที่ไม่ตรงกับคำค้นหา
+            }
+        });
+    }
