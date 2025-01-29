@@ -126,4 +126,11 @@ input#search {
     background-color: transparent;
     border-radius: 0;
     color: #002646;
+    font-family: 'Anuphan';
+}
+
+input:focus{
+  outline: none;
+  border-bottom: 1px solid #093254;
+  color:#fff;
 }
