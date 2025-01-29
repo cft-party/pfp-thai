@@ -89,6 +89,7 @@ if (document.getElementById('loginForm')) {
 }
 
     // ฟังก์ชันสำหรับค้นหาจังหวัด
+
     document.getElementById('search').addEventListener('input', searchProvinces);
 
     function searchProvinces() {
@@ -96,11 +97,29 @@ if (document.getElementById('loginForm')) {
         const tableRows = document.querySelectorAll("#provinceTableBody tr");
 
         tableRows.forEach(row => {
-            const provinceName = row.cells[0].textContent.toLowerCase(); // เอาชื่อจังหวัดจาก column แรก
+            const provinceName = row.cells[0].textContent.toLowerCase();
             if (provinceName.includes(searchTerm)) {
-                row.style.display = ""; // แสดงแถวที่ตรงกับคำค้นหา
+                row.style.display = "";
             } else {
-                row.style.display = "none"; // ซ่อนแถวที่ไม่ตรงกับคำค้นหา
+                row.style.display = "none";
+            }
+        });
+
+        // เรียกใช้ฟังก์ชันจัดสีใหม่
+        reapplyRowStyles();
+    }
+
+    function reapplyRowStyles() {
+        const visibleRows = [...document.querySelectorAll("#provinceTableBody tr:not([style*='display: none'])")];
+
+        visibleRows.forEach((row, index) => {
+            if (index % 2 === 0) {
+                row.style.backgroundColor = "#ffffff"; // คู่ (even)
+            } else {
+                row.style.backgroundColor = "#ffe6dd"; // คี่ (odd)
             }
         });
     }
+
+    // เรียกใช้ 1 ครั้งตอนโหลดหน้า
+    reapplyRowStyles();
