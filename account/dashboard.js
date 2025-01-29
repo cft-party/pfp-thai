@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     // ดึงข้อมูลสมาชิกจาก localStorage (หรือ API หากต้องการ)
     const memberId = localStorage.getItem("memberId") || "Guest";
-    const lastLogin = localStorage.getItem("lastLogin") || "Unknown";
+    const userId = localStorage.getItem("id") || "Unknown";
     
     document.getElementById("memberId").textContent = memberId;
-    document.getElementById("lastLogin").textContent = lastLogin;
+    document.getElementById("id").textContent = userId;
 
     // ปุ่ม Logout
     document.getElementById("logoutBtn").addEventListener("click", function () {
         localStorage.removeItem("memberId");
-        localStorage.removeItem("lastLogin");
+        localStorage.removeItem("id");
         window.location.href = "index.html"; // เปลี่ยนเส้นทางไปหน้า Login
     });
 });
