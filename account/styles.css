@@ -138,3 +138,14 @@ input:focus{
     tbody tr {
         transition: background-color 0.3s;
     }
+
+.action {
+    display: flex;
+}
+
+button.action-btn {
+    width: 200px;
+    height: 55.2px;
+    display: flex;
+    justify-content: center;
+}
