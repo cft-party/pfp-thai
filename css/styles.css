@@ -348,3 +348,11 @@ label:after {
     right: 10px;
     position: fixed;
 }
+
+@media screen and (max-width: 480px) {
+  .num img {
+    width: 150px;
+  }
+}
+
+.num img{width:200px;}
