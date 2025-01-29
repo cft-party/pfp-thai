@@ -349,9 +349,9 @@ label:after {
     position: fixed;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 520px) {
   .num img {
-    width: 150px;
+    width: 150px!important;
   }
 }
 
