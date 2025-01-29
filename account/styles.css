@@ -139,8 +139,12 @@ input:focus{
         transition: background-color 0.3s;
     }
 
+
 .action {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-content: center;
+    margin: 0 auto;
 }
 
 button.action-btn {
