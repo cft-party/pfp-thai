@@ -2,7 +2,7 @@ let validCredentials = [];
 
 // Function to load credentials from a JSON URL
 async function loadCredentials() {
-    const url = 'https://script.google.com/macros/s/AKfycbzVdsx4Ws5AKkPjYArd0vnYisGAqSMK7xo2tuRWmGSxw1oWV3PUWmRI19-GF-h68ZbdpQ/exec';  // Replace with your JSON link
+    const url = 'https://script.google.com/macros/s/AKfycbzcqz4fhq6GnCcFYvtRRJpLSkbX1tt3cavmd1KTv9aanc_sDx7jV-TrhLgbgaxYa6n9Fg/exec';  // Replace with your JSON link
     try {
         const response = await fetch(url);
         const data = await response.json();
