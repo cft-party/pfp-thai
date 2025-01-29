@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data.forEach(province => {
                 const row = tableBody.insertRow();
                 row.insertCell(0).textContent = province.province;
-                row.insertCell(1).textContent = province.memberCount;
+                row.insertCell(1).textContent = province.members;
             });
         })
         .catch(error => console.error("Error fetching province data:", error));
