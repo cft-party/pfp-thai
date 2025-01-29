@@ -368,4 +368,9 @@ box {
     background: linear-gradient(to left, rgb(255, 98, 0), rgb(255 135 16), rgb(255, 98, 0));
     color: #fff;
     font-weight: 500;
+    transition: all 1s;
+}
+
+box:hover {
+    background: rgb(225, 0, 0);
 }
