@@ -79,9 +79,11 @@
                 if (data.length > 0) {
                     const pm = data[0];
                     candidateContainer.innerHTML = `
-                        <img src="${pm.img_url}" alt="แคนดิเดตนายกรัฐมนตรี">
-                        <h4>${pm.name}</h4>
-                        <p>${pm.work_experience}</p>
+                        <div class="candidate-list">
+                            <img src="${pm.img_url}" alt="แคนดิเดตนายกรัฐมนตรี">
+                            <h4>${pm.name}</h4>
+                            <p>${pm.work_experience}</p>
+                        </div>
                     `;
                 }
             })
@@ -98,9 +100,11 @@
                     const mpCard = document.createElement('div');
                     mpCard.classList.add('mp-card');
                     mpCard.innerHTML = `
-                        <img src="${mp.img_url}" alt="${mp.name}">
-                        <h4>${mp.name}</h4>
-                        <p>${mp.work_experience}</p>
+                        <div class="candidate-list">
+                            <img src="${mp.img_url}" alt="${mp.name}">
+                            <h4>${mp.name}</h4>
+                            <p>${mp.work_experience}</p>
+                        </div>
                     `;
                     mpContainer.appendChild(mpCard);
                 });
