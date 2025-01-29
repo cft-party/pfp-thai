@@ -87,8 +87,10 @@ section.info-box {
     border: 3px solid #000;
     border-radius: 10px;
     color: #fff;
+    background: var(--or);
 }
 
 section.actions {
     background: #fff;
+    width: 100%;
 }
