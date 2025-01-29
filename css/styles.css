@@ -32,6 +32,7 @@ header {
 header .logo {
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 header .logo img {
