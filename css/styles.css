@@ -364,7 +364,6 @@ img {
 
 box {
     width: 100%;
-    padding: 12px 16px;
     background: linear-gradient(to left, rgb(255, 98, 0), rgb(255 135 16), rgb(255, 98, 0));
     color: #fff;
     font-weight: 500;
@@ -372,4 +371,12 @@ box {
 
 box:hover {
     background: rgb(225, 0, 0);
+}
+
+box a {
+    color: unset;
+    text-decoration: none;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: center;
 }
