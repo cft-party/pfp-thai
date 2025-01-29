@@ -356,3 +356,7 @@ label:after {
 }
 
 .num img{width:200px;}
+
+img {
+    user-select: none;
+}
