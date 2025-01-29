@@ -18,6 +18,20 @@ document.addEventListener("DOMContentLoaded", function () {
     
     document.getElementById("memberId").textContent = memberId;
 
+    // ดึงข้อมูลจังหวัดและจำนวนสมาชิกพรรค
+    fetch("https://script.google.com/macros/s/AKfycby_qth7GKre5EbZpZvNje_sOo_HR5tvJDU3USJCXIqbC_27U0Vh7Lejg5m0bTjDQdJXSA/exec")
+        .then(response => response.json())
+        .then(data => {
+            const tableBody = document.getElementById("provinceTable").getElementsByTagName("tbody")[0];
+            tableBody.innerHTML = "";
+            data.forEach(province => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = province.province;
+                row.insertCell(1).textContent = province.memberCount;
+            });
+        })
+        .catch(error => console.error("Error fetching province data:", error));
+
     // ปุ่ม Logout
     document.getElementById("logoutBtn").addEventListener("click", function () {
         localStorage.removeItem("memberId");
