@@ -1,10 +1,22 @@
 document.addEventListener("DOMContentLoaded", function () {
     // ดึงข้อมูลสมาชิกจาก localStorage (หรือ API หากต้องการ)
     const memberId = localStorage.getItem("memberId") || "Guest";
-    const userId = localStorage.getItem("id") || "Unknown";
+    
+    // ดึงข้อมูล id จาก API
+    fetch("https://script.google.com/macros/s/AKfycbzcqz4fhq6GnCcFYvtRRJpLSkbX1tt3cavmd1KTv9aanc_sDx7jV-TrhLgbgaxYa6n9Fg/exec")
+        .then(response => response.json())
+        .then(data => {
+            const user = data.find(user => user.memberId === memberId);
+            if (user) {
+                localStorage.setItem("id", user.id);
+                document.getElementById("id").textContent = user.id;
+            } else {
+                document.getElementById("id").textContent = "Unknown";
+            }
+        })
+        .catch(error => console.error("Error fetching user ID:", error));
     
     document.getElementById("memberId").textContent = memberId;
-    document.getElementById("id").textContent = userId;
 
     // ปุ่ม Logout
     document.getElementById("logoutBtn").addEventListener("click", function () {
@@ -29,26 +41,32 @@ if (document.getElementById('loginForm')) {
         }
 
         // Validate the credentials
-        const isValid = validCredentials.some(cred => cred.memberId === memberId && cred.password === password);
-
-        if (isValid) {
-            // Save the memberId if "Remember me" is checked
-            if (rememberMe) {
-                localStorage.setItem('memberId', memberId);
-            } else {
-                localStorage.removeItem('memberId');
-            }
-            
-            // Redirect to dashboard.html
-            window.location.href = 'dashboard.html';
-        } else {
-            alert('รหัสประจำตัวสมาชิกพรรคหรือรหัสผ่านไม่ถูกต้อง');
-        }
+        fetch("https://script.google.com/macros/s/AKfycbzcqz4fhq6GnCcFYvtRRJpLSkbX1tt3cavmd1KTv9aanc_sDx7jV-TrhLgbgaxYa6n9Fg/exec")
+            .then(response => response.json())
+            .then(data => {
+                const user = data.find(user => user.memberId === memberId && user.password === password);
+                if (user) {
+                    localStorage.setItem("memberId", user.memberId);
+                    localStorage.setItem("id", user.id);
+                    
+                    if (rememberMe) {
+                        localStorage.setItem("rememberedMemberId", user.memberId);
+                    } else {
+                        localStorage.removeItem("rememberedMemberId");
+                    }
+                    
+                    // Redirect to dashboard.html
+                    window.location.href = 'dashboard.html';
+                } else {
+                    alert('รหัสประจำตัวสมาชิกพรรคหรือรหัสผ่านไม่ถูกต้อง');
+                }
+            })
+            .catch(error => console.error("Error validating user:", error));
     });
 
     // Optional: Load saved memberId if available
     window.addEventListener('load', function() {
-        const savedMemberId = localStorage.getItem('memberId');
+        const savedMemberId = localStorage.getItem('rememberedMemberId');
         if (savedMemberId) {
             document.getElementById('memberId').value = savedMemberId;
             document.getElementById('rememberMe').checked = true;
