@@ -1,9 +1,12 @@
 // Loader Script
 window.addEventListener('load', function () {
   const loader = document.querySelector('.loader');
-  // ซ่อน Loader หลังจากโหลดหน้าเว็บเสร็จ
-  loader.classList.add('hidden');
+  // รอ 5 วินาทีก่อนซ่อน Loader
+  setTimeout(() => {
+    loader.classList.add('hidden');
+  }, 5000);
 });
+
 
 // Menu Button Script
 const menuBtn = document.getElementById('menuBtn');
