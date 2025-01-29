@@ -71,24 +71,33 @@
 
     <script src="/js/script.js"></script> 
     <script>
-        fetch('https://script.google.com/macros/s/AKfycbxe7HNMQBEvWVhKJP1ux4eauxTpdwiVzq9voLWvnQrP_rmyiDs-_C5sY_H94IscADKD/exec')
-            .then(response => response.json())
-            .then(data => {
-                const candidateContainer = document.getElementById('candidate-card');
-                const mpContainer = document.getElementById('mp-list');
-                
-                // แสดงแคนดิเดตนายกรัฐมนตรี
-                const pm = data.find(person => person.position === "แคนดิเดตนายกรัฐมนตรี");
-                if (pm) {
-                    candidateContainer.innerHTML = `
-                        <img src="${pm.img_url}" alt="แคนดิเดตนายกรัฐมนตรี">
+    fetch('https://script.google.com/macros/s/AKfycbxe7HNMQBEvWVhKJP1ux4eauxTpdwiVzq9voLWvnQrP_rmyiDs-_C5sY_H94IscADKD/exec')
+        .then(response => response.json())
+        .then(data => {
+            console.log("Fetched Data:", data);  // ตรวจสอบข้อมูลที่ได้จาก API
+
+            const candidateContainer = document.getElementById('candidate-card');
+            const mpContainer = document.getElementById('mp-list');
+
+            // แสดงแคนดิเดตนายกรัฐมนตรี
+            const pm = data.find(person => person.position.trim() === "แคนดิเดตนายกรัฐมนตรี");
+            if (pm) {
+                candidateContainer.innerHTML = `
+                    <div class="candidate-profile">
+                        <img src="${pm.img_url}" alt="${pm.name}">
                         <h4>${pm.name}</h4>
                         <p>${pm.work_experience}</p>
-                    `;
-                }
-                
-                // แสดงผู้สมัครสมาชิกสภาผู้แทนราษฎร
-                data.filter(person => person.position === "สมาชิกสภาผู้แทนราษฎร").forEach(mp => {
+                    </div>
+                `;
+            } else {
+                candidateContainer.innerHTML = "<p>ไม่มีข้อมูลแคนดิเดตนายกรัฐมนตรี</p>";
+            }
+
+            // แสดงผู้สมัครสมาชิกสภาผู้แทนราษฎร
+            const mps = data.filter(person => person.position.trim() === "สมาชิกสภาผู้แทนราษฎร");
+            
+            if (mps.length > 0) {
+                mps.forEach(mp => {
                     const mpCard = document.createElement('div');
                     mpCard.classList.add('mp-card');
                     mpCard.innerHTML = `
@@ -98,10 +107,14 @@
                     `;
                     mpContainer.appendChild(mpCard);
                 });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            });
-    </script>
+            } else {
+                mpContainer.innerHTML = "<p>ไม่มีข้อมูลผู้สมัครสมาชิกสภาผู้แทนราษฎร</p>";
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+</script>
+
 </body>
 </html>
