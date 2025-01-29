@@ -341,3 +341,10 @@ label:after {
     color: rgb(217, 48, 37);
     margin-left: 2px;
 }
+
+.num {
+    z-index: 20;
+    bottom: 10px;
+    right: 10px;
+    position: fixed;
+}
