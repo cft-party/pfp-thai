@@ -37,10 +37,14 @@
                     <script> function updateTime() { var now = new Date(); var hours = now.getHours(); var minutes = now.getMinutes(); var seconds = now.getSeconds(); minutes = minutes < 10 ? '0' + minutes : minutes; seconds = seconds < 10 ? '0' + seconds : seconds; var timeString = hours + ':' + minutes + ':' + seconds; document.getElementById('time').textContent = timeString; } setInterval(updateTime, 1000); </script>
                   </h3>
               </div>
+                <div style=" display: grid; text-align: left; ">
+                    <label for="roblox-user">โปรดใส่ชื่อผู้ใช้ Roblox</label>
+                    <input type="text" id="roblox-user" name="name_roblox" placeholder="ชื่อผู้ใช้ Roblox" required="">
+                </div>
               <h2>คำถาม: <span id="question"></span></h2>
-                <input type="button" value="เห็นด้วย/เห็นชอบ" onclick="handleClick('Agree')"  class="vote-option" style=" background: #00d008; ">
-                <input type="button" value="ไม่เห็นด้วย/ไม่เห็นชอบ" onclick="handleClick('Disagree')"  class="vote-option" style=" background: #d00000; ">
-                <input type="button" value="งดออกเสียง" onclick="handleClick('Abstain')" class="vote-option" style=" background: #FFC107; ">
+                <input name="vote-option" type="button" value="เห็นด้วย/เห็นชอบ" onclick="handleClick('Agree')"  class="vote-option" style=" background: #00d008; ">
+                <input name="vote-option" type="button" value="ไม่เห็นด้วย/ไม่เห็นชอบ" onclick="handleClick('Disagree')"  class="vote-option" style=" background: #d00000; ">
+                <input name="vote-option" type="button" value="งดออกเสียง" onclick="handleClick('Abstain')" class="vote-option" style=" background: #FFC107; ">
               <br>
               <button class="submit-btn">ยืนยันการลงมติ</button>
           </div>
