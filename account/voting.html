@@ -54,28 +54,30 @@
       </div>
     </main>
     <script>
+        // Function to handle button clicks for vote options
         function handleClick(value) {
+            // Set the hidden input value based on the selected vote option
             document.getElementById('selected-vote').value = value;
-    
-            submitForm();
         }
     
-        function submitForm() {
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbw-devSVUY5wFHCszFZyfZ401I14zCqJOytSBTEX4WKUiPFPeZM1Poib2nFwd4YP5Xa/exec';
+        // Function to submit the form
+        function submitVote() {
             const form = document.forms['hello-sheet'];
-          
-            form.addEventListener('submit', e => {
-              e.preventDefault();
-              fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbw-devSVUY5wFHCszFZyfZ401I14zCqJOytSBTEX4WKUiPFPeZM1Poib2nFwd4YP5Xa/exec';
+    
+            // Check if a vote option is selected
+            if (document.getElementById('selected-vote').value === "") {
+                alert("กรุณาเลือกตัวเลือกการลงมติ");
+                return; // Prevent form submission if no vote option is selected
+            }
+    
+            // Submit the form data via POST request
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
                 .then(response => {
                     alert("บันทึกข้อมูลเรียบร้อยแล้ว..");
                     window.location.href = "https://pfp-thai.pages.dev/account/dashboard"; 
                 })
                 .catch(error => console.error('Error!', error.message));
-            });
-    
-            // Trigger the form submission after setting the vote value
-            form.submit();
         }
     </script>
     <script>
