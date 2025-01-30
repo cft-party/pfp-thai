@@ -1,1 +1,46 @@
-
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบลงมติในการประชุมพรรคก้าวเพื่ออนาคต</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&amp;family=Charm:wght@400;700&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/IMG/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * { font-family: 'Anuphan', sans-serif; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/IMG/logo.png" alt="Logo พรรคก้าวเพื่ออนาคต">
+                <h1><a href="dashboard">ระบบลงมติในการประชุมพรรคก้าวเพื่ออนาคต</a></h1>
+            </div>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </header>
+    <main style="margin: 90px auto 0;width: 80%;">
+        <img src="/IMG/banner.png" alt="Banner พรรคก้าวเพื่ออนาคต" width="100%">
+    </main>
+    <main style="margin: 0;">
+      <div class="container">
+          <div class="vote-section">
+              <h2>ประเภทการประชุม: <span id="type"></span></h2>
+              <h2>วาระ: <span id="agenda"></span></h2>
+              <h3>วันที่: 
+                <span id="date"></span>,
+                <span id="time"></span>
+                <script> function updateTime() { var now = new Date(); var hours = now.getHours(); var minutes = now.getMinutes(); var seconds = now.getSeconds(); // Add leading zeros for single-digit numbers minutes = minutes < 10 ? '0' + minutes : minutes; seconds = seconds < 10 ? '0' + seconds : seconds; var timeString = hours + ':' + minutes + ':' + seconds; document.getElementById('time').textContent = timeString; } // Update time every second setInterval(updateTime, 1000); </script>
+              </h3>
+              <h2>คำถาม: <span id="section"></span></h2>
+              <div class="vote-option">เห็นด้วย</div>
+              <div class="vote-option">ไม่เห็นด้วย</div>
+              <div class="vote-option">งดออกเสียง</div>
+              <button class="submit-btn">ยืนยันการลงมติ</button>
+          </div>
+      </div>
+    </main>
+</body>
+</html>
