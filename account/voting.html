@@ -49,6 +49,37 @@
               <button class="submit-btn">ยืนยันการลงมติ</button>
           </div>
       </div>
-    </main>
+    </main><script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-devSVUY5wFHCszFZyfZ401I14zCqJOytSBTEX4WKUiPFPeZM1Poib2nFwd4YP5Xa/exec'
+        const form = document.forms['hello-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                alert("บันทึกข้อมูลเรียบร้อยแล้ว..");
+                window.location.href = "https://pfp-thai.pages.dev/account/dashboard"; 
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+    <script>
+  // Fetch data from the given URL and update the elements dynamically
+  fetch("https://script.google.com/macros/s/AKfycbw-devSVUY5wFHCszFZyfZ401I14zCqJOytSBTEX4WKUiPFPeZM1Poib2nFwd4YP5Xa/exec")
+    .then(response => response.json())
+    .then(data => {
+      // Assuming the data has the structure: [{type, agenda, date, question}]
+      const meetingData = data[0]; // If it's an array, grab the first object
+
+      // Update the page content
+      document.getElementById('type').textContent = meetingData.type;
+      document.getElementById('agenda').textContent = meetingData.agenda;
+      document.getElementById('date').textContent = meetingData.date;
+      document.getElementById('question').textContent = meetingData.question;
+    })
+    .catch(error => {
+      console.error('Error fetching meeting data:', error);
+    });
+</script>
 </body>
 </html>
