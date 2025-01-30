@@ -32,7 +32,7 @@
               <h3>วันที่: 
                 <span id="date"></span>,
                 <span id="time"></span>
-                <script> function updateTime() { var now = new Date(); var hours = now.getHours(); var minutes = now.getMinutes(); var seconds = now.getSeconds(); // Add leading zeros for single-digit numbers minutes = minutes < 10 ? '0' + minutes : minutes; seconds = seconds < 10 ? '0' + seconds : seconds; var timeString = hours + ':' + minutes + ':' + seconds; document.getElementById('time').textContent = timeString; } // Update time every second setInterval(updateTime, 1000); </script>
+                <script> function updateTime() { var now = new Date(); var hours = now.getHours(); var minutes = now.getMinutes(); var seconds = now.getSeconds(); minutes = minutes < 10 ? '0' + minutes : minutes; seconds = seconds < 10 ? '0' + seconds : seconds; var timeString = hours + ':' + minutes + ':' + seconds; document.getElementById('time').textContent = timeString; } setInterval(updateTime, 1000); </script>
               </h3>
               <h2>คำถาม: <span id="section"></span></h2>
               <div class="vote-option">เห็นด้วย</div>
