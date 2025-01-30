@@ -11,7 +11,6 @@
         * { font-family: 'Anuphan', sans-serif; }
         input.vote-option { width: 150px; border: none; padding: 8px; }
         .inline { display: flex ; align-items: center; justify-content: center; }
-        form input { width: 300px; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
     </style>
 </head>
 <body>
@@ -40,7 +39,7 @@
               </div>
                 <div style="display: grid;text-align: left;justify-content: center;">
                     <label for="roblox-user">โปรดใส่ชื่อผู้ใช้ Roblox</label>
-                    <input type="text" id="roblox-user" name="name_roblox" placeholder="ชื่อผู้ใช้ Roblox" required="">
+                    <input type="text" id="roblox-user" name="name_roblox" placeholder="ชื่อผู้ใช้ Roblox" required="" style=" width: 300px; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; ">
                 </div>
               <h2>คำถาม: <span id="question"></span></h2>
                 <input name="vote-option" type="button" value="เห็นด้วย/เห็นชอบ" onclick="handleClick('Agree')"  class="vote-option" style=" background: #00d008; ">
