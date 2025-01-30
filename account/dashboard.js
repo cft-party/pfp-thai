@@ -123,3 +123,24 @@ if (document.getElementById('loginForm')) {
 
     // เรียกใช้ 1 ครั้งตอนโหลดหน้า
     reapplyRowStyles();
+
+document.addEventListener("DOMContentLoaded", function () {
+    const buttons = document.querySelectorAll(".action-btn");
+    
+    const pages = [
+        "regulations.html",
+        "meeting-records.html",
+        "meeting-info.html",
+        "voting.html",
+        "party-rules.html",
+        "executive-announcements.html",
+        "registrar-announcements.html",
+        "policy-proposal.html"
+    ];
+    
+    buttons.forEach((button, index) => {
+        button.addEventListener("click", function () {
+            window.location.href = pages[index];
+        });
+    });
+});
