@@ -11,6 +11,10 @@ body {
     text-align: center;
 }
 
+a {
+    color: unset;
+    text-decoration: auto;
+}
 .flex {
     display: flex;
     width: 80%;
