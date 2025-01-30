@@ -10,7 +10,7 @@
     <style>
         * { font-family: 'Anuphan', sans-serif; }
         input.vote-option { width: 150px; border: none; padding: 8px; }
-        .inline { display: flex ; align-items: center; justify-content: center; font-size: 12px;}
+        .inline { display: flex ; align-items: center; justify-content: center; font-size: 12px; font-weight: 500;}
     </style>
 </head>
 <body>
@@ -41,7 +41,7 @@
                     <label for="roblox-user">โปรดใส่ชื่อผู้ใช้ Roblox</label>
                     <input type="text" id="roblox-user" name="name_roblox" placeholder="ชื่อผู้ใช้ Roblox" required="" style=" width: 300px; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; ">
                 </div>
-              <h2>คำถาม: <span id="question"></span></h2>
+              <h2 style=" font-size: 20px; font-weight: 500; ">คำถาม: <span id="question"></span></h2>
                 <input name="vote-option" type="button" value="เห็นด้วย/เห็นชอบ" onclick="handleClick('Agree')"  class="vote-option" style=" background: #00d008; ">
                 <input name="vote-option" type="button" value="ไม่เห็นด้วย/ไม่เห็นชอบ" onclick="handleClick('Disagree')"  class="vote-option" style=" background: #d00000; ">
                 <input name="vote-option" type="button" value="งดออกเสียง" onclick="handleClick('Abstain')" class="vote-option" style=" background: #FFC107; ">
