@@ -11,6 +11,7 @@
         * { font-family: 'Anuphan', sans-serif; }
         input.vote-option { width: 150px; border: none; padding: 8px; }
         .inline { display: ruby ; align-items: center; justify-content: center; font-size: 12px; font-weight: 500;}
+        input:focus {color: unset; }
     </style>
 </head>
 <body>
@@ -44,7 +45,9 @@
                 </div>
                 <div style="display: grid;text-align: left;justify-content: center;">
                     <label for="vote-option"><span id="question"></span></label>
-                    <input  value="เห็นด้วย/ไม่เห็นด้วย/งดออกเสียง" type="text" id="vote-option" name="vote-option" placeholder="ชื่อผู้ใช้ Roblox" required="" style=" width: 300px; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; ">
+                    <center>
+                        <input value="เห็นด้วย/ไม่เห็นด้วย/งดออกเสียง" type="text" id="vote-option" name="vote-option" placeholder="ชื่อผู้ใช้ Roblox" required="" style="width: 300px;padding: 10px;margin: 10px 0;border: 1px solid #ccc;border-radius: 5px;">
+                    </center>
                 </div>
                 <br>
                 <button class="submit-btn">ยืนยันการลงมติ</button>
