@@ -18,23 +18,25 @@
     </header>
     
     <main>
-        <section id="announcements">
-            <article class="announcement">
-                <h2>ประกาศที่ 1</h2>
-                <p>รายละเอียดของประกาศที่ 1...</p>
-                <p><strong>วันที่ประกาศ:</strong> 30 มกราคม 2025</p>
-            </article>
-
-            <article class="announcement">
-                <h2>ประกาศที่ 2</h2>
-                <p>รายละเอียดของประกาศที่ 2...</p>
-                <p><strong>วันที่ประกาศ:</strong> 29 มกราคม 2025</p>
-            </article>
-        </section>
+        
+        <table border="1" style="border-collapse: collapse;width: 80%;margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th style=" width: 5%; ">ลำดับ</th>
+                    <th>ชื่อเรื่อง</th>
+                    <th style=" width: 20%; ">วันที่ประกาศ</th>
+                </tr>
+            </thead>
+            <tbody id="newsTable">
+            </tbody>
+        </table>
     </main>
     
     <footer>
         <p>&copy; 2025 พรรคการเมือง XYZ</p>
     </footer>
+    
+
+    <script>fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec').then(response => response.json()).then(data => {const tableBody = document.getElementById('newsTable');data.forEach((item, index) => {const row = document.createElement('tr');const numberCell = document.createElement('td');numberCell.textContent = index + 1;row.appendChild(numberCell);const nameCell = document.createElement('td');const link = document.createElement('a');link.href = item.url;link.textContent = item.nameAnnouncement;nameCell.appendChild(link);row.appendChild(nameCell);const dateCell = document.createElement('td');dateCell.textContent = item.date;row.appendChild(dateCell);tableBody.appendChild(row);});}).catch(error => {console.error('Error fetching data:', error);});</script>
 </body>
 </html>
