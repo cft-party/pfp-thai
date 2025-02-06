@@ -39,7 +39,62 @@
   </header>
 
   <!-- Main Content -->
-  
+  <main>
+        <table border="1" style="border-collapse: collapse;width: 80%;margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th style=" width: 5%; text-align: center;">ลำดับ</th>
+                    <th style=" text-align: center;">ชื่อเรื่อง</th>
+                    <th style=" width: 20%; text-align: center;">วันที่ประกาศ</th>
+                    <th style=" width: 10%; text-align: center;">ดาวน์โหลด</th>
+                </tr>
+            </thead>
+            <tbody id="newsTable"></tbody>
+        </table>
+    </main>
+  <script>
+    window.addEventListener('load', function () {
+        const loader = document.querySelector('.loader');
+        fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('newsTable');
+                data.forEach((item, index) => {
+                    const row = document.createElement('tr');
+                    const numberCell = document.createElement('td');
+                    numberCell.textContent = index + 1;
+                    row.appendChild(numberCell);
+
+                    const nameCell = document.createElement('td');
+                    const link = document.createElement('a');
+                    link.href = item.url;
+                    link.textContent = item.nameAnnouncement;
+                    nameCell.appendChild(link);
+                    row.appendChild(nameCell);
+
+                    const dateCell = document.createElement('td');
+                    dateCell.textContent = item.date;
+                    row.appendChild(dateCell);
+
+                    const downloadCell = document.createElement('td');
+                    const downloadBtn = document.createElement('a');
+                    downloadBtn.href = item.url;
+                    downloadBtn.textContent = 'ดาวน์โหลด';
+                    downloadBtn.setAttribute('download', '');
+                    downloadCell.appendChild(downloadBtn);
+                    row.appendChild(downloadCell);
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            })
+            .finally(() => {
+                loader.classList.add('hidden');
+            });
+    });
+  </script>
 
   <!-- Footer -->
   <footer>
