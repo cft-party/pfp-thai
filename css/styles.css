@@ -380,3 +380,11 @@ box a {
     display: flex;
     justify-content: center;
 }
+@media (max-width: 400px) {
+    header .logo h1 {
+        display: none;
+    }
+    .num {
+        display: none;
+    }
+}
