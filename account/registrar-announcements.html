@@ -40,7 +40,7 @@
         <p>&copy; 2025 พรรคก้าวเพื่ออนาคต</p>
     </footer>
     
-    <script>window.addEventListener('load', function () {const loader = document.querySelector('.loader');setTimeout(() => {loader.classList.add('hidden');}, 5000);});</script>
+    <script>window.addEventListener('load', function () {const loader = document.querySelector('.loader');setTimeout(() => {loader.classList.add('hidden');}, 6000);});</script>
     <script>fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec').then(response => response.json()).then(data => {const tableBody = document.getElementById('newsTable');data.forEach((item, index) => {const row = document.createElement('tr');const numberCell = document.createElement('td');numberCell.textContent = index + 1;row.appendChild(numberCell);const nameCell = document.createElement('td');const link = document.createElement('a');link.href = item.url;link.textContent = item.nameAnnouncement;nameCell.appendChild(link);row.appendChild(nameCell);const dateCell = document.createElement('td');dateCell.textContent = item.date;row.appendChild(dateCell);tableBody.appendChild(row);});}).catch(error => {console.error('Error fetching data:', error);});</script>
 </body>
 </html>
