@@ -95,7 +95,7 @@
 
     <script src="/js/script.js"></script> 
      <script>
-        
+        document.addEventListener("DOMContentLoaded", function () {
         // ดึงข้อมูลแคนดิเดตนายกรัฐมนตรี
         fetch('https://script.google.com/macros/s/AKfycbym8Y3XeA5M89J88CJIDZZWGLBLu4askM0rVWrDeuwWcq64ApKNrnKLOxupKG9164qG/exec')
             .then(response => response.json())
@@ -117,13 +117,13 @@
             .catch(error => {
                 console.error('Error fetching PM data:', error);
             });
-         
+    
         // ดึงข้อมูลผู้สมัครสมาชิกสภาผู้แทนราษฎร
         fetch('https://script.google.com/macros/s/AKfycbxsk9R-CGWvQzGJMoCA6WazMKnhcXcvMef9SHGU0aA8ci61LKaUiEs7PYK4RP3n9EIR/exec')
             .then(response => response.json())
             .then(data => {
                 const mpContainer = document.getElementById('mp-list');
-                data.forEach(mp => {
+                data.forEach((mp, index) => {
                     const mpCard = document.createElement('div');
                     mpCard.classList.add('mp-card');
                     mpCard.innerHTML = `
@@ -134,6 +134,7 @@
                         </div>
                         <div class="top-detail">
                             <div class="prefix">บัญชีรายชื่อ</div>
+                            <div class="number-tag">${index + 1}</div>
                         </div>
                     `;
                     mpContainer.appendChild(mpCard);
@@ -142,6 +143,7 @@
             .catch(error => {
                 console.error('Error fetching MP data:', error);
             });
+    });
 
     </script>
 
