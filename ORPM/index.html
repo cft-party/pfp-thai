@@ -55,50 +55,78 @@
     </main>
   <script>
     window.addEventListener('load', function () {
-        const loader = document.querySelector('.loader');
-        fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
-            .then(response => response.json())
-            .then(data => {
-                const tableBody = document.getElementById('newsTable');
-                data.forEach((item, index) => {
-                    const row = document.createElement('tr');
-                    const numberCell = document.createElement('td');
-                    numberCell.textContent = index + 1;
-                    row.appendChild(numberCell);
-
-                    const nameCell = document.createElement('td');
-                    const link = document.createElement('a');
-                    link.href = item.url;
-                    link.textContent = item.nameAnnouncement;
-                    nameCell.appendChild(link);
-                    row.appendChild(nameCell);
-
-                    const dateCell = document.createElement('td');
-                    dateCell.textContent = item.date;
-                    row.appendChild(dateCell);
-
-                    const downloadCell = document.createElement('td');
-                    const downloadBtn = document.createElement('a');
-                    downloadBtn.href = item.url;
-                    downloadBtn.textContent = 'ดาวน์โหลด';
-                    downloadBtn.setAttribute('download', '');
-                    downloadCell.appendChild(downloadBtn);
-                    row.appendChild(downloadCell);
-
-                    tableBody.appendChild(row);
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-            })
-            .finally(() => {
-                loader.classList.add('hidden');
-            });
-    });
+      const loader = document.querySelector('.loader');
+      const tableBody = document.getElementById('newsTable');
+      const paginationContainer = document.createElement('div');
+      paginationContainer.style.textAlign = 'center';
+      paginationContainer.style.display = 'flex';
+      
+      let currentPage = 1;
+      const rowsPerPage = 10;
+      let data = [];
+      
+      function displayPage(page) {
+          tableBody.innerHTML = '';
+          let start = (page - 1) * rowsPerPage;
+          let end = start + rowsPerPage;
+          let paginatedItems = data.slice(start, end);
+          
+          paginatedItems.forEach((item, index) => {
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${start + index + 1}</td>
+                  <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
+                  <td>${item.date}</td>
+                  <td><a href="${item.url}" download>ดาวน์โหลด</a></td>
+              `;
+              tableBody.appendChild(row);
+          });
+      }
+      
+      function setupPagination() {
+          paginationContainer.innerHTML = '';
+          let pageCount = Math.ceil(data.length / rowsPerPage);
+          
+          for (let i = 1; i <= pageCount; i++) {
+              let btn = document.createElement('button');
+              btn.textContent = i;
+              btn.style.margin = '5px';
+              btn.style.padding = '5px 10px';
+              btn.style.cursor = 'pointer';
+              
+              btn.addEventListener('click', function () {
+                  currentPage = i;
+                  displayPage(currentPage);
+              });
+              
+              paginationContainer.appendChild(btn);
+          }
+          
+          tableBody.parentElement.appendChild(paginationContainer);
+      }
+      
+      fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
+          .then(response => response.json())
+          .then(fetchedData => {
+              data = fetchedData;
+              displayPage(currentPage);
+              if (data.length > rowsPerPage) {
+                  setupPagination();
+              }
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+          })
+          .finally(() => {
+              if (loader) {
+                  loader.classList.add('hidden');
+              }
+          });
+  });
   </script>
 
   <!-- Footer -->
-  <footer>
+  <footer style=" position: absolute; bottom: 0; width: 100%; ">
     <div class="container">
       <div class="footer-logo">
         <img src="/IMG/logo.png" alt="Logo พรรคก้าวเพื่ออนาคต">
