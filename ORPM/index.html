@@ -56,74 +56,95 @@
     </main>
   <script>
     window.addEventListener('load', function () {
-      const loader = document.querySelector('.loader');
-      const tableBody = document.getElementById('newsTable');
-      const paginationContainer = document.createElement('div');
-      paginationContainer.style.textAlign = 'center';
-      paginationContainer.style.display = 'flex';
+    const loader = document.querySelector('.loader');
+    const tableBody = document.getElementById('newsTable');
+    const paginationContainer = document.createElement('div');
+    paginationContainer.style.textAlign = 'center';
+    paginationContainer.style.marginTop = '20px';
+    
+    let currentPage = 1;
+    const rowsPerPage = 10;
+    let data = [];
+    
+    function downloadFile(fileId) {
+      const driveURL = `https://drive.google.com/uc?export=download&id=${fileId}`;
+      const a = document.createElement("a");
+      a.href = driveURL;
+      a.target = "_blank";
+      a.download = "";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+  }
+
+    
+    function displayPage(page) {
+      tableBody.innerHTML = '';
+      let start = (page - 1) * rowsPerPage;
+      let end = start + rowsPerPage;
+      let paginatedItems = data.slice(start, end);
       
-      let currentPage = 1;
-      const rowsPerPage = 10;
-      let data = [];
-      
-      function displayPage(page) {
-          tableBody.innerHTML = '';
-          let start = (page - 1) * rowsPerPage;
-          let end = start + rowsPerPage;
-          let paginatedItems = data.slice(start, end);
+      paginatedItems.forEach((item, index) => {
+          const fileId = item.url.split('/d/')[1].split('/')[0]; // ดึง File ID
+          const row = document.createElement('tr');
           
-          paginatedItems.forEach((item, index) => {
-              const row = document.createElement('tr');
-              row.innerHTML = `
-                  <td>${start + index + 1}</td>
-                  <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
-                  <td>${item.date}</td>
-                  <td><a href="${item.url}" download>ดาวน์โหลด</a></td>
-              `;
-              tableBody.appendChild(row);
+          row.innerHTML = `
+              <td>${start + index + 1}</td>
+              <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
+              <td>${item.date}</td>
+              <td><button id="downloadBtn${index}">Download</button></td>
+          `;
+          tableBody.appendChild(row);
+  
+          // กำหนดให้แต่ละปุ่มเรียกใช้ฟังก์ชันเฉพาะของมันเอง
+          document.getElementById(`downloadBtn${index}`).addEventListener("click", function() {
+              downloadFile(fileId);
           });
-      }
-      
-      function setupPagination() {
-          paginationContainer.innerHTML = '';
-          let pageCount = Math.ceil(data.length / rowsPerPage);
-          
-          for (let i = 1; i <= pageCount; i++) {
-              let btn = document.createElement('button');
-              btn.textContent = i;
-              btn.style.margin = '5px';
-              btn.style.padding = '5px 10px';
-              btn.style.cursor = 'pointer';
-              
-              btn.addEventListener('click', function () {
-                  currentPage = i;
-                  displayPage(currentPage);
-              });
-              
-              paginationContainer.appendChild(btn);
-          }
-          
-          tableBody.parentElement.appendChild(paginationContainer);
-      }
-      
-      fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
-          .then(response => response.json())
-          .then(fetchedData => {
-              data = fetchedData;
-              displayPage(currentPage);
-              if (data.length > rowsPerPage) {
-                  setupPagination();
-              }
-          })
-          .catch(error => {
-              console.error('Error fetching data:', error);
-          })
-          .finally(() => {
-              if (loader) {
-                  loader.classList.add('hidden');
-              }
-          });
-  });
+      });
+  }
+
+    
+    function setupPagination() {
+        paginationContainer.innerHTML = '';
+        let pageCount = Math.ceil(data.length / rowsPerPage);
+        
+        for (let i = 1; i <= pageCount; i++) {
+            let btn = document.createElement('button');
+            btn.textContent = i;
+            btn.style.margin = '5px';
+            btn.style.padding = '5px 10px';
+            btn.style.cursor = 'pointer';
+            
+            btn.addEventListener('click', function () {
+                currentPage = i;
+                displayPage(currentPage);
+            });
+            
+            paginationContainer.appendChild(btn);
+        }
+        
+        tableBody.parentElement.appendChild(paginationContainer);
+    }
+    
+    fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
+        .then(response => response.json())
+        .then(fetchedData => {
+            data = fetchedData;
+            displayPage(currentPage);
+            if (data.length > rowsPerPage) {
+                setupPagination();
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+        .finally(() => {
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+        });
+});
+
   </script>
 
   <!-- Footer -->
