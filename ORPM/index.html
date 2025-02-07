@@ -41,7 +41,10 @@
 
   <!-- Main Content -->
   <main style=" padding: 105px 0 30px; ">
-    <h4 style="width: 80%;margin: 0 auto;padding: 20px 0;font-size: 20px;">ประกาศสำนักงานนายทะเบียนสมาชิกพรรคก้าวเพื่ออนาคต</h4>
+        <div style="width: 80%;margin: 0 auto;padding: 20px 0;font-size: 20px;display: flex;justify-content: space-between;">
+            <h4>ประกาศสำนักงานนายทะเบียนสมาชิกพรรคก้าวเพื่ออนาคต</h4>
+            <p>จำนวนเอกสาร <span id="count"></span> เล่ม/ฉบับ</p>
+        </div>
         <table border="1" style="border-collapse: collapse;width: 80%;margin: 0 auto;">
             <thead>
                 <tr>
@@ -59,6 +62,7 @@
     const loader = document.querySelector('.loader');
     const tableBody = document.getElementById('newsTable');
     const paginationContainer = document.createElement('div');
+    const documentCount = document.getElementById('number');
     paginationContainer.style.textAlign = 'center';
     paginationContainer.style.marginTop = '20px';
     
@@ -67,42 +71,39 @@
     let data = [];
     
     function downloadFile(fileId) {
-      const driveURL = `https://drive.google.com/uc?export=download&id=${fileId}`;
-      const a = document.createElement("a");
-      a.href = driveURL;
-      a.target = "_blank";
-      a.download = "";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-  }
-
+        const driveURL = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        const a = document.createElement("a");
+        a.href = driveURL;
+        a.target = "_blank";
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
     
     function displayPage(page) {
-      tableBody.innerHTML = '';
-      let start = (page - 1) * rowsPerPage;
-      let end = start + rowsPerPage;
-      let paginatedItems = data.slice(start, end);
-      
-      paginatedItems.forEach((item, index) => {
-          const fileId = item.url.split('/d/')[1].split('/')[0]; // ดึง File ID
-          const row = document.createElement('tr');
-          
-          row.innerHTML = `
-              <td>${start + index + 1}</td>
-              <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
-              <td>${item.date}</td>
-              <td><button id="downloadBtn${index}">Download</button></td>
-          `;
-          tableBody.appendChild(row);
-  
-          // กำหนดให้แต่ละปุ่มเรียกใช้ฟังก์ชันเฉพาะของมันเอง
-          document.getElementById(`downloadBtn${index}`).addEventListener("click", function() {
-              downloadFile(fileId);
-          });
-      });
-  }
+        tableBody.innerHTML = '';
+        let start = (page - 1) * rowsPerPage;
+        let end = start + rowsPerPage;
+        let paginatedItems = data.slice(start, end);
+        
+        paginatedItems.forEach((item, index) => {
+            const fileId = item.url.split('/d/')[1].split('/')[0]; // ดึง File ID
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${start + index + 1}</td>
+                <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
+                <td>${item.date}</td>
+                <td><button id="downloadBtn${index}">Download</button></td>
+            `;
+            tableBody.appendChild(row);
 
+            document.getElementById(`downloadBtn${index}`).addEventListener("click", function() {
+                downloadFile(fileId);
+            });
+        });
+    }
     
     function setupPagination() {
         paginationContainer.innerHTML = '';
@@ -130,6 +131,7 @@
         .then(response => response.json())
         .then(fetchedData => {
             data = fetchedData;
+            documentCount.textContent = data.length; // แสดงจำนวนเอกสาร
             displayPage(currentPage);
             if (data.length > rowsPerPage) {
                 setupPagination();
