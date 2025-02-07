@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>สำนักงานนายทะเบียนสมาชิก [ORPM.] | พรรคก้าวเพื่ออนาคต</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@100..700&amp;family=Charm:wght@400;700&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/IMG/logo.png">
+  <style>.cwc-css-1ps52du-cwc div { font-family: 'Anuphan', sans-serif !important; }.cwc-widget-tooltip.cwc-css-xu986c-cwc { font-family: 'Anuphan'; }.cwc-css-1ps52du-cwc div { font-family: 'Anuphan', sans-serif; } .cwc-css-1r5h5p8-cwc {     font-family: 'Anuphan' !important; } .cwc-css-1rmdl7r-cwc {     font-family: 'Anuphan' !important; } a.cwc-css-iqei37-cwc {     font-family: 'Anuphan' !important; } button.cwc-change-consent-button.cwc-css-foglt-cwc {     font-family: 'Anuphan' !important; } button.cwc-css-flo482-cwc-cwc {     font-family: 'Anuphan' !important; }.cwc-sdk-container { z-index: 21 !important; position: absolute !important; }.cwc-banner-title.cwc-css-ta2nsy-cwc { font-family: 'Anuphan', sans-serif; }.cwc-banner-desc.cwc-css-1wepw5u-cwc { font-family: 'Anuphan', sans-serif; }.cwc-setting-button.cwc-css-1jc56ul-cwc { font-family: 'Anuphan', sans-serif; }button.cwc-accept-button.cwc-css-1y8jbme-cwc-cwc { font-family: 'Anuphan', sans-serif; }a.cwc-banner-policy-link.cwc-css-1lqm5oj-cwc { font-family: 'Anuphan', sans-serif; }.cwc-css-1egflgb-cwc { display: none !important; height: 0px !important; width: 0px !important; }</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="เว็บไซต์ทางการของสำนักงานนายทะเบียนสมาชิก | พรรคก้าวเพื่ออนาคต">
+  <meta name="keywords" content="ก้าวเพื่ออนาคต, พรรคการเมือง, ประชาธิปไตย, นโยบาย, ประเทศไทย">
+  <meta name="author" content="สำนักงานนายทะเบียนสมาชิก">
+  <meta property="og:title" content="สำนักงานนายทะเบียนสมาชิก - พรรคก้าวเพื่ออนาคต">
+  <meta property="og:description" content="เว็บไซต์ทางการของสำนักงานนายทะเบียนสมาชิก | พรรคก้าวเพื่ออนาคต">
+  <meta property="og:image" content="https://pfp-thai.pages.dev/IMG/logo-color.png">
+  <meta property="og:url" content="https://pfp-thai.pages.dev/ORPM/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="สำนักงานนายทะเบียนสมาชิก - พรรคก้าวเพื่ออนาคต">
+  <meta name="twitter:description" content="เว็บไซต์อย่างเป็นทางการของพรรคก้าวเพื่ออนาคต ทำเพื่อประชาชน อำนาจสูงสุดเป็นของประชาชน">
+  <meta name="twitter:image" content="https://pfp-thai.pages.dev/IMG/logo-color.png">
+  <meta name="twitter:url" content="https://pfp-thai.pages.dev/ORPM/"> 
+<style data-emotion="css-global" data-s=""></style><style data-emotion="css" data-s=""></style><style data-emotion="cwc-css" data-s=""></style>
+  <style>td { padding: 2px; }</style>
+</head>
+<body>
+   <!-- Loader -->
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="/IMG/logo.png" alt="Logo พรรคก้าวเพื่ออนาคต">
+        <h1>สำนักงานนายทะเบียนสมาชิกพรรคก้าวเพื่ออนาคต</h1>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style=" padding: 105px 0 30px; ">
+    <h4 style="width: 80%;margin: 0 auto;padding: 20px 0;font-size: 20px;">ประกาศสำนักงานนายทะเบียนสมาชิกพรรคก้าวเพื่ออนาคต</h4>
+        <table border="1" style="border-collapse: collapse;width: 80%;margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th style=" width: 5%; text-align: center;">ลำดับ</th>
+                    <th style=" text-align: center;">ชื่อเรื่อง</th>
+                    <th style=" width: 20%; text-align: center;">วันที่ประกาศ</th>
+                    <th style=" width: 10%; text-align: center;">ดาวน์โหลด</th>
+                </tr>
+            </thead>
+            <tbody id="newsTable"></tbody>
+        </table>
+    </main>
+  <script>
+    window.addEventListener('load', function () {
+    const loader = document.querySelector('.loader');
+    const tableBody = document.getElementById('newsTable');
+    const paginationContainer = document.createElement('div');
+    paginationContainer.style.textAlign = 'center';
+    paginationContainer.style.marginTop = '20px';
+    
+    let currentPage = 1;
+    const rowsPerPage = 10;
+    let data = [];
+    
+    function downloadFile(fileId) {
+        const driveURL = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        const a = document.createElement("a");
+        a.href = driveURL;
+        a.target = "_blank";
+        a.download = "";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    }
+    
+    function displayPage(page) {
+        tableBody.innerHTML = '';
+        let start = (page - 1) * rowsPerPage;
+        let end = start + rowsPerPage;
+        let paginatedItems = data.slice(start, end);
+        
+        paginatedItems.forEach((item, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${start + index + 1}</td>
+                <td><a href="${item.url}" target="_blank">${item.nameAnnouncement}</a></td>
+                <td>${item.date}</td>
+                <td><button onclick="downloadFile('${item.url.split('/d/')[1].split('/')[0]}')">ดาวน์โหลด</button></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    
+    function setupPagination() {
+        paginationContainer.innerHTML = '';
+        let pageCount = Math.ceil(data.length / rowsPerPage);
+        
+        for (let i = 1; i <= pageCount; i++) {
+            let btn = document.createElement('button');
+            btn.textContent = i;
+            btn.style.margin = '5px';
+            btn.style.padding = '5px 10px';
+            btn.style.cursor = 'pointer';
+            
+            btn.addEventListener('click', function () {
+                currentPage = i;
+                displayPage(currentPage);
+            });
+            
+            paginationContainer.appendChild(btn);
+        }
+        
+        tableBody.parentElement.appendChild(paginationContainer);
+    }
+    
+    fetch('https://script.google.com/macros/s/AKfycbzgvA35kllaeJcm-kFrOxFKC6b4V4N-RhLBKNoetDYgtsYeIfPYMK3H6f3ijuRZxeg6aA/exec')
+        .then(response => response.json())
+        .then(fetchedData => {
+            data = fetchedData;
+            displayPage(currentPage);
+            if (data.length > rowsPerPage) {
+                setupPagination();
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        })
+        .finally(() => {
+            if (loader) {
+                loader.classList.add('hidden');
+            }
+        });
+});
+
+  </script>
+
+  <!-- Footer -->
+  <footer style=" position: absolute; bottom: 0; width: 100%; ">
+    <div class="container">
+      <div class="footer-logo">
+        <img src="/IMG/logo.png" alt="Logo พรรคก้าวเพื่ออนาคต">
+        <p>สำนักงานนายทะเบียนสมาชิกพรรคก้าวเพื่ออนาคต</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 - 2025 พรรคก้าวเพื่ออนาคต. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
